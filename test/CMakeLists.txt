@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.6)
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+include_directories(${PROJECT_SOURCE_DIR}/src/clrs)
+set(SOURCE testmain.cpp)
+add_executable(runTests ${SOURCE})
+target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
