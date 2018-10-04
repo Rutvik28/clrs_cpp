@@ -6,7 +6,7 @@ enum Color{
     BLACK,
 };
 
-template<typename K, typename V>
+template<class K, class V>
 struct Node{
     Node(K key=0, V value=0){
         this->key = key;
