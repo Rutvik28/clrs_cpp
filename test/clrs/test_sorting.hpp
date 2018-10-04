@@ -67,3 +67,10 @@ TEST(sorting, merge_sort){
     }
 }
 
+TEST(sorting, quick_sort){
+    for (int i = 0; i < 20; ++i){
+        auto X{generate_data(i)};
+        test_sort_function(quick_sort, X);
+    }
+}
+

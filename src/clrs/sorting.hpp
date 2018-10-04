@@ -49,7 +49,7 @@ namespace sorting{
         auto pleft = left;
         auto pright = middle;
         while (pleft < middle && pright < right){
-            if (pleft->key < pright->key){
+            if (pleft->key <= pright->key){
                 tmp.push_back(*pleft);
                 pleft++;
             }
@@ -72,8 +72,32 @@ namespace sorting{
         _merge_sort(X, X.begin(), X.end());
     }
 
+    template<class T, class U>
+    void _quick_sort(T& X, U left, U right){
+        U pivit = left;
+        auto smaller = left;
+        auto larger = left;
+        while (true){
+            for (; smaller < right; ++smaller){
+                if (smaller->key < pivit->key){
+                    break;
+                }
+            }
+            for (; larger < right; ++larger){
+                if (larger->key > pivit->key){
+                    break;
+                }
+            }
+            if (smaller <= larger){
+                break;
+            }
+            std::swap(*smaller, *larger);
+        }
+        std::swap(*pivit, *smaller);
+    }
+
     template<class T>
-    void quick_sort(){
+    void quick_sort(T& X){
     }
 }
 
