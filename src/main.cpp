@@ -1,6 +1,5 @@
 #include <iostream>
-using namespace std;
 
 int main(){
-    cout << "hello" << endl;
+    st::cout << "hello, see hpp files in src/clrs and test/clrs folder." << std::endl;
 }
