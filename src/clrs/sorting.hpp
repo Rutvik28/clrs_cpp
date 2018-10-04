@@ -74,30 +74,25 @@ namespace sorting{
 
     template<class T, class U>
     void _quick_sort(T& X, U left, U right){
-        U pivit = left;
-        auto smaller = left;
-        auto larger = left;
-        while (true){
-            for (; smaller < right; ++smaller){
-                if (smaller->key < pivit->key){
-                    break;
-                }
-            }
-            for (; larger < right; ++larger){
-                if (larger->key > pivit->key){
-                    break;
-                }
-            }
-            if (smaller <= larger){
-                break;
-            }
-            std::swap(*smaller, *larger);
+        if (right - left < 2){
+            return;
         }
-        std::swap(*pivit, *smaller);
+        U pivit = right-1;
+        auto b = left;
+        for (auto a = left; a < pivit; ++a){
+            if (a->key >= pivit->key){
+                continue;
+            }
+            std::swap(*a, *b);
+            b++;
+        }
+        std::swap(*pivit, *b);
+        _quick_sort(X, left, b);
+        _quick_sort(X, b+1, right);
     }
 
     template<class T>
     void quick_sort(T& X){
+        _quick_sort(X, X.begin(), X.end());
     }
 }
-
